@@ -1,0 +1,18 @@
+public List<apxio__Student__c> selectActiveStudents() {
+ List<apxio__Student__c> e=new List<apxio__Student__c>();
+ List<apxio__Student__c> s=[SELECT Id, Name, apxio__Active__c FROM apxio__Student__c
+                      where apxio__Active__c=True];
+                      for (apxio__Student__c b:s){
+                          e.add(b);
+                      }  //for end
+                      return e;      
+
+
+}
+/*public List<apxio__Student__c> selectActiveStudents() {
+    List<apxio__Student__c> students = [SELECT Id, Name
+                                          FROM apxio__Student__c
+                                         WHERE apxio__Active__c=True];
+    
+    return students;
+}*/

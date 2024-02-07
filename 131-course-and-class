@@ -1,0 +1,17 @@
+public void createCourseAndClass(String name, String description) {
+ apxio__Course__c createcourse=new apxio__Course__c();
+ createcourse.Name=name;
+ createcourse.apxio__Course_Details__c=description;
+ insert createcourse;
+
+ apxio__Class__c  createClass=new  apxio__Class__c();
+ createClass.Name=name;
+ createClass.apxio__Course__c=createcourse.Id;
+
+ if(description.length>255){
+     createClass.apxio__Description__c=description.substring(0,255);
+ }else{
+     createClass.apxio__Description__c=description;
+ }
+ insert createClass;
+}

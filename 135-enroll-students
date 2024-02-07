@@ -1,23 +1,23 @@
 public void enrollStudents(List<String> emails, String className) {
- apxio__Class__c  cl= [SELECT Id FROM apxio__Class__c 
-                        WHERE Name=:className LIMIT 1 ];
+List<apxio__Class_Enrollment__c> enrollments = new List<apxio__Class_Enrollment__c>();
+    List<apxio__Student__c> students = [SELECT Id, apxio__Email__c 
+                                          FROM apxio__Student__c
+                                         WHERE apxio__Email__c IN: emails ];
+    List<apxio__Class__c> cls = [SELECT Id, Name 
+                                   FROM apxio__Class__c
+                                  WHERE Name =: className];
 
-   if(cl!=null){
-      List<apxio__Student__c> st=[SELECT Id FROM apxio__Student__c
-                                  WHERE apxio__Email__c IN :emails ];
+    for(Integer i=0; i<students.size(); i++){
+        apxio__Class_Enrollment__c enrollment = new apxio__Class_Enrollment__c();
 
-   List<apxio__Class_Enrollment__c> enempty=new apxio__Class_Enrollment__c();
+        enrollment.apxio__Student__c = students[i].Id;
+        enrollment.apxio__Offered_Class__c = cls[0].Id;
 
-    for(apxio__Student__c b:st){
-        apxio__Class_Enrollment__c   en=new  apxio__Class_Enrollment__c();
-        en.apxio__Student__c =b.Id;
-        en.apxio__Offered_Class__c=cl.Id;
-        enempty.add(en);
-    }//for bitis
-    insert enempty;
-    }else{
-       System.debug('Sinif mevcut degil');
+        enrollments.add(enrollment);
     }
 
+    if(!enrollments.isEmpty()){
+        insert enrollments;
+    }
 
 }

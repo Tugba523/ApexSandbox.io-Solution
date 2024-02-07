@@ -1,0 +1,19 @@
+public Id classFromCourse(String courseName) {
+
+  List<apxio__Course__c> cInfo=[SELECT Id FROM apxio__Course__c 
+                               WHERE Name=: courseName LIMIT 1 ];//ensonki kayidi almak istiyorum
+
+ If (!cInfo.isEmpty()){//bos degilse
+    
+  apxio__Class__c cl=new apxio__Class__c();
+  cl.Name=courseName;
+  cl.apxio__Course__c=cInfo.get(0).Id;
+  //apxio__Course__c bu field name 
+  insert cl;
+  return cl.Id;
+
+ }else{
+   return null;
+ }
+  
+}

@@ -3,7 +3,7 @@ apxio__Class__c  cl= [SELECT Id,Name FROM apxio__Class__c
                         WHERE Name=:className LIMIT 1 ];
 
    if(cl!=null){
-      List<apxio__Student__c> st=[SELECT Id,Name FROM apxio__Student__c
+      List<apxio__Student__c> st=[SELECT Id,Name,apxio__Email__c FROM apxio__Student__c
                                   WHERE apxio__Email__c IN :emails ];
 
    List<apxio__Class_Enrollment__c> enempty=new apxio__Class_Enrollment__c();

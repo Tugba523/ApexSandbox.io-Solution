@@ -9,7 +9,7 @@ public void createCourseAndClass(String name, String description) {
  createClass.apxio__Course__c=createcourse.Id;
 
  if(description.length>255){
-     createClass.apxio__Description__c=description.substring(0,255);
+     createClass.apxio__Description__c=description.subString(0,255);
  }else{
      createClass.apxio__Description__c=description;
  }

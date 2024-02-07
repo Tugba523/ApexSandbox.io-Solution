@@ -6,6 +6,7 @@ public void createCourseAndClass(String name, String description) {
 
  apxio__Class__c  createClass=new  apxio__Class__c();
  createClass.Name=name;
+ createClass.apxio__Course__c=createcourse.Id;
  createClass.apxio__Description__c=description?.left(255);
 
  insert createClass;

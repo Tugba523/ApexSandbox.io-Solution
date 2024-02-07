@@ -20,5 +20,5 @@ List<apxio__Class_Enrollment__c> enrollments = new List<apxio__Class_Enrollment_
     if(!enrollments.isEmpty()){
         insert enrollments;
     }
-}
+
 }

@@ -1,8 +1,8 @@
 public void enrollStudents(List<String> emails, String className) {
- apxio__Class__c  CL= [SELECT Id FROM apxio__Class__c 
+ apxio__Class__c  cl= [SELECT Id FROM apxio__Class__c 
                         WHERE Name=:className LIMIT 1 ];
 
-   if(!CL=null){
+   if(!cl=null){
       List<apxio__Student__c> st=[SELECT Id FROM apxio__Student__c
                                   WHERE apxio__Email__c IN :emails ];
 
@@ -11,15 +11,13 @@ public void enrollStudents(List<String> emails, String className) {
     for(apxio__Student__c b:st){
         apxio__Class_Enrollment__c   en=new  apxio__Class_Enrollment__c();
         en.apxio__Student__c =b.Id;
-        en.apxio__Offered_Class__c=Cl.Id;
+        en.apxio__Offered_Class__c=cl.Id;
         enempty.add(en);
     }//for bitis
     insert enempty;
-   
-
-   }else{
+    }else{
        System.debug('Sinif mevcut degil');
-   }
+    }
 
 
 }

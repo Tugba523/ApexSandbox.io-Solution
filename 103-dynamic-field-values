@@ -1,0 +1,27 @@
+public List<String> getFieldsValue(Account acc, List<String> fields)
+{
+    /*
+    List<String>  emptyList = new  List<String>();
+  
+
+  for(String singleField:fields){
+        
+     String a=String.valueOf(acc.get(singleField));  
+      emptyList.add(a);
+  }
+return emptyList;
+*/
+
+list<String> v=new list<String>();
+string sv=null;
+for(String f:fields){
+    Object fv=acc.get(f);
+    if(fv==null){
+        sv=null;
+    }else{
+        sv=string.valueOf(fv);
+    }
+    v.add(sv);
+}
+ return v;
+}

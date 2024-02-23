@@ -1,0 +1,29 @@
+public Boolean isPalindrome(String str){
+//code here
+str=str.toLowercase();
+
+String alpha='abcdefghijklmnopqrstuvwxyz';
+
+String num='0123456789';
+String result='';
+
+for(integer i=0;i<str.length();i++){
+    if(alpha.contains(str.subString(i,i+1))||num.contains(str.subString(i,i+1))){
+        result=result+str.subString(i,i+1);      
+    }
+  }
+integer l=0;
+integer r=result.length()-1;
+
+while(l<=r){
+
+  if(result.subString(l,l+1)!=result.subString(r,r+1)){
+      return false;
+     }else{
+         l++;
+         r--;
+     }
+  }//while loop end
+return true;
+
+}
